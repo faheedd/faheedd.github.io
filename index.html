@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Olaimo Faheed Bolaji's personal portfolio website. Aspiring software developer learning Python, HTML, and CSS.">
+
+    <title>Faheed Bolaji | Developer Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           GLOBAL SETTINGS
+        ========================= */
+
+        :root {
+            --background: #080c16;
+            --surface: #111827;
+            --surface-light: #1a2436;
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 50px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(8, 12, 22, 0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(56,189,248,0.10),
+                    transparent 35%
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border: 1px solid rgba(56,189,248,0.3);
+
+            border-radius: 30px;
+
+            color: var(--primary);
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 13px 25px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+            transition: var(--transition);
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #08111e;
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--surface);
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-box {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .info-box i {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .info-box h3 {
+            font-size: 1rem;
+        }
+
+        .info-box p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================
+           SKILLS SECTION
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .skill-header h3 {
+            font-size: 1rem;
+        }
+
+        .skill-header span {
+            color: var(--primary);
+        }
+
+        .progress {
+            height: 7px;
+            background: #263246;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           PROJECTS SECTION
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            height: 200px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--surface-light);
+
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            margin: 15px 0;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-tags span {
+            background: rgba(56,189,248,0.1);
+            color: var(--primary);
+
+            padding: 5px 12px;
+
+            border-radius: 20px;
+
+            font-size: 0.8rem;
+        }
+
+
+        /* =========================
+           CONTACT SECTION
+        ========================= */
+
+        .contact-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 20px auto;
+            max-width: 550px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            color: white;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 75px;
+                left: 0;
+
+                width: 100%;
+
+                background: var(--background);
+
+                flex-direction: column;
+                align-items: center;
+
+                padding: 30px;
+
+                display: none;
+
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <div class="container">
+
+            <nav>
+                <a href="#home" class="logo">
+                    Faheed<span>.</span>
+                </a>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="hero-content reveal">
+
+                <span class="hero-tag">
+                    <i class="fas fa-code"></i>
+                    Aspiring Software Developer
+                </span>
+
+                <h1>
+                    Hello, I'm <span class="highlight">Faheed Bolaji.</span>
+                </h1>
+
+                <p>
+                    I'm passionate about technology, programming,
+                    and creating useful digital solutions.
+                    I'm currently learning Python, HTML, and CSS
+                    while building my skills as a developer.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="btn btn-primary">
+                        View My Projects
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                About <span class="highlight">Me</span>
+            </h2>
+
+            <p class="section-subtitle reveal">
+                A little information about who I am.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-card reveal">
+
+                    <h3>My Journey</h3>
+
+                    <p>
+                        I'm an aspiring developer currently studying
+                        at Kwara State University.
+                    </p>
+
+                    <p>
+                        I enjoy learning new technologies, improving
+                        my computer skills, and exploring how software
+                        can solve everyday problems.
+                    </p>
+
+                    <p>
+                        My goal is to become a skilled software
+                        developer and contribute to meaningful
+                        technology projects.
+                    </p>
+
+                </div>
+
+                <div class="about-info reveal">
+
+                    <div class="info-box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Education</h3>
+                        <p>Kwara State University</p>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-code"></i>
+                        <h3>Development</h3>
+                        <p>Learning Programming</p>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-location-dot"></i>
+                        <h3>Location</h3>
+                        <p>Lagos, Nigeria</p>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Interests</h3>
+                        <p>Technology & Innovation</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section class="section" id="skills">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                My <span class="highlight">Skills</span>
+            </h2>
+
+            <p class="section-subtitle reveal">
+                Technologies and abilities I'm currently developing.
+            </p>
+
+            <div class="skills-grid">
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-header">
+                        <h3>HTML</h3>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 35%"></div>
+                    </div>
+
+                </div>
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-header">
+                        <h3>CSS</h3>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 25%"></div>
+                    </div>
+
+                </div>
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-header">
+                        <h3>Python</h3>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 20%"></div>
+                    </div>
+
+                </div>
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-header">
+                        <h3>Communication</h3>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="section" id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                My <span class="highlight">Projects</span>
+            </h2>
+
+            <p class="section-subtitle reveal">
+                Projects I've worked on and what I'm currently building.
+            </p>
+
+            <div class="projects-grid">
+
+                <div class="project-card reveal">
+
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>Personal Portfolio</h3>
+
+                        <p>
+                            A personal website designed to introduce
+                            me, showcase my skills, and provide
+                            contact information.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card reveal">
+
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3>Future Project</h3>
+
+                        <p>
+                            I'm currently learning and preparing
+                            to build more projects that demonstrate
+                            my programming and problem-solving skills.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Learning</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="section" id="contact">
+
+        <div class="container">
+
+            <div class="contact-box reveal">
+
+                <h2 class="section-title">
+                    Let's <span class="highlight">Connect</span>
+                </h2>
+
+                <p>
+                    I'm open to learning opportunities, collaborations,
+                    internships, and connecting with people in technology.
+                </p>
+
+                <div class="contact-links">
+
+                    <a href="mailto:olaimof@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        Email Me
+                    </a>
+
+                    <a href="tel:09153525305">
+                        <i class="fas fa-phone"></i>
+                        Call Me
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © <span id="year"></span> Olaimo Faheed Bolaji.
+                Built with HTML, CSS & JavaScript.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // Mobile navigation
+
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("show");
+
+            const icon = menuBtn.querySelector("i");
+
+            if (navLinks.classList.contains("show")) {
+                icon.classList.replace("fa-bars", "fa-xmark");
+            } else {
+                icon.classList.replace("fa-xmark", "fa-bars");
+            }
+
+        });
+
+
+        // Close menu after clicking a link
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("show");
+
+                const icon = menuBtn.querySelector("i");
+
+                icon.classList.replace("fa-xmark", "fa-bars");
+
+            });
+
+        });
+
+
+        // Reveal animations
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+
+        // Automatic copyright year
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>
